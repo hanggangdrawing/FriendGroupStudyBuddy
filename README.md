@@ -1,85 +1,116 @@
-Love the idea! A combined **Study Group + Social App** is a great portfolio project. Since you want to learn Python and GitHub, here's what I'd suggest:
+Great idea for a learning project! Here's a solid tech stack recommendation that keeps **Python at the core** and is beginner-to-intermediate friendly for a friend group.
 
 ---
 
-## 🐍 Recommended Stack
+## 🛠️ Recommended Tech Stack
 
-**Backend — Python (FastAPI)**
-- FastAPI is modern, fast, and great for learning
-- Built-in docs at `/docs` (Swagger UI) — perfect for a team
-- Easy to connect to Supabase (you already know it!)
-- WebSockets support for **real-time chat**
+### **Backend — Python (FastAPI)**
+**FastAPI** is the best choice for you because:
+- Pure Python, modern, and fast
+- Auto-generates API docs (Swagger UI) — great for learning
+- Easy to understand for beginners vs Django
+- Built-in support for async (needed for real-time chat)
 
-**Frontend — Next.js + TypeScript**
-- You already know this from BytesDoc ✅
-- Reuse what you've learned
+```
+pip install fastapi uvicorn sqlalchemy alembic python-jose passlib
+```
 
-**Database — Supabase (PostgreSQL)**
-- You already have experience with it ✅
-- Use Supabase Realtime for chat/notifications
-- Supabase Storage for albums and file uploads
+### **Database**
+- **PostgreSQL** — production-grade, free, widely used
+- **SQLAlchemy** — Python ORM (no raw SQL needed)
+- **Alembic** — database migrations
 
-**Deployment**
-- Backend → **Render** (you already know it ✅)
-- Frontend → **Vercel** (you already know it ✅)
-- Database → **Supabase** (free tier is enough)
+For local dev, you can start with **SQLite** (zero setup), then switch to PostgreSQL before deploying.
+
+### **Real-Time Chat**
+- **WebSockets** — built into FastAPI natively ✅
+- No extra service needed for a small friend group
+
+### **Frontend**
+Since your goal is Python + GitHub skills, keep the frontend **simple**:
+- **HTML + Tailwind CSS + Alpine.js** (lightweight, no build tools)
+- OR **React** (if any of you want to learn JS too)
+
+> Tip: Start with plain HTML/Tailwind — you can always upgrade later.
+
+### **File/Image Storage (Shared Albums)**
+- **Cloudinary** (free tier) — upload photos from Python easily
+- OR store locally during dev, move to **AWS S3** later
+
+### **Authentication**
+- **JWT tokens** via `python-jose` + `passlib` for hashed passwords
 
 ---
 
-## 📦 Python Libraries You'll Use
+## 📁 Suggested Project Structure
 
-| Purpose | Library |
+```
+studygroupbuddy/
+├── backend/
+│   ├── main.py            # FastAPI app entry
+│   ├── models/            # SQLAlchemy models
+│   ├── routes/            # posts, chat, polls, flashcards...
+│   ├── schemas/           # Pydantic request/response models
+│   └── database.py
+├── frontend/
+│   ├── index.html
+│   ├── static/
+│   └── pages/
+├── requirements.txt
+├── .env
+└── README.md
+```
+
+---
+
+## 🚀 Deployment (Free Options)
+
+| Service | What it hosts | Free tier |
+|---|---|---|
+| **Railway** | Backend (FastAPI) + PostgreSQL | ✅ Yes |
+| **Render** | Backend + DB | ✅ Yes |
+| **Vercel** | Frontend (if React) | ✅ Yes |
+| **Supabase** | PostgreSQL + Auth | ✅ Yes |
+
+**Recommended combo:** Railway (backend + DB) + Vercel (frontend)
+> Railway is the easiest for Python beginners — push to GitHub and it auto-deploys. 🎉
+
+---
+
+## 🗺️ Feature → Python Module Mapping
+
+| Feature | Python Tools |
 |---|---|
-| Web framework | `fastapi` |
-| Server | `uvicorn` |
-| Database | `supabase-py` |
-| Auth / JWT | `python-jose`, `passlib` |
-| File uploads | `python-multipart` |
-| WebSocket chat | built into FastAPI |
-| Pomodoro/timers | frontend only |
+| Posts & Timeline | FastAPI routes + SQLAlchemy |
+| Shared Albums | Cloudinary Python SDK |
+| Polls | FastAPI + simple DB model |
+| Group Chat | FastAPI WebSockets |
+| Flashcards/Quizzes | FastAPI + JSON storage |
+| Pomodoro Timer | Pure frontend (JS) |
+| Shared Notes | FastAPI + Markdown storage |
 
 ---
 
-## 🗂️ Feature Breakdown
+## 📌 GitHub Workflow Tips (for your org)
 
-**Social side**
-- Posts with likes/comments
-- Shared photo albums
-- Polls
-- Memories/timeline feed
-- Group chat (WebSockets)
-
-**Study side**
-- Upload reviewers (PDF/DOCX)
-- Flashcards
-- Quizzes
-- Pomodoro timer (frontend only)
-- Shared notes
+Since learning GitHub is also a goal:
+- Use **branches** per feature (`feature/chat`, `feature/polls`)
+- Use **Pull Requests** — review each other's code before merging
+- Use **GitHub Projects** (kanban board) to track tasks
+- Write a proper `README.md` with setup instructions
+- Use **GitHub Actions** for auto-deploy to Railway on push to `main`
 
 ---
 
-## 🤝 GitHub Workflow for Your Circle
+## 🧭 Suggested Build Order
 
-Since the goal is also to **learn GitHub**, set these up:
-
-1. **Branch protection** — no one pushes directly to `main`
-2. **Pull Requests** — everyone reviews each other's code
-3. **Issues** — assign features to each member
-4. **Projects board** — Kanban board to track progress (free on GitHub)
-5. **Conventional commits** — `feat:`, `fix:`, `docs:` etc.
-
----
-
-## 👥 How to Split the Work
-
-| Member | Area |
-|---|---|
-| 1 | Auth + Users + Groups |
-| 2 | Posts + Albums + Polls |
-| 3 | Chat (WebSockets) |
-| 4 | Study features (flashcards, quizzes, notes) |
-| Frontend lead | Next.js pages + UI |
+1. **Auth** (register/login) — foundation for everything
+2. **Posts feed** — basic CRUD, gets you comfortable with FastAPI
+3. **Group Chat** — WebSockets, the fun part
+4. **Polls** — simple and satisfying
+5. **Flashcards/Quizzes** — study features
+6. **Shared Albums** — file uploads
+7. **Memories/Timeline** — pulls it all together
 
 ---
 
-Want me to **scaffold the full project structure** — FastAPI backend + Next.js frontend in a monorepo, with Supabase schema — so your group can just clone and start building?
