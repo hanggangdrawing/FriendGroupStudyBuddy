@@ -8,7 +8,7 @@ export const AVATAR_COLORS = [
 ];
 
 export const FRIENDS = [
-  { id: "haddy",   name: "Haddy",   role: "Civil Service prep" },
+  { id: "haddy",   name: "Haddy",   role: "Lead" },
   { id: "edres",   name: "Edres",   role: "Backend lead" },
   { id: "jho",     name: "Jho",     role: "Frontend / UI" },
   { id: "abdensa", name: "Abdensa", role: "Algorithms" },
@@ -27,6 +27,8 @@ export const FRIENDS = [
   { id: "huamza",  name: "Huamza",  role: "Mock exams" },
   { id: "waren",   name: "Waren",   role: "Cheerleader" },
   { id: "basty",   name: "Basty",   role: "Group historian" },
+  { id: "paw",     name: "Papaw",   role: "Chill"}
+  { id: "Kelh",    name: "Kelhma"   role: "Unknown"}
 ].map((f, i) => ({ ...f, color: AVATAR_COLORS[i % AVATAR_COLORS.length] }));
 
 export const initialsOf = (name) => {
