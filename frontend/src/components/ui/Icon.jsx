@@ -91,6 +91,18 @@ export default function Icon({ name, size = 22, stroke = "currentColor", fill = 
     case "pin": return (
       <svg {...props}><path d="M12 17v5"/><path d="M9 4h6l-1 5 3 3v3H7v-3l3-3-1-5z"/></svg>
     );
+    case "bot": return (
+      <svg {...props}><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 4v4"/><circle cx="12" cy="3" r="1" fill="currentColor" stroke="none"/><circle cx="9" cy="14" r="1.2" fill="currentColor" stroke="none"/><circle cx="15" cy="14" r="1.2" fill="currentColor" stroke="none"/><path d="M2 14h2M20 14h2"/></svg>
+    );
+    case "users": return (
+      <svg {...props}><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.6"/><path d="M15 14.4a5 5 0 016.5 4.8"/></svg>
+    );
+    case "calendar": return (
+      <svg {...props}><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17"/><path d="M8 3v4M16 3v4"/><circle cx="8.5" cy="14" r="0.8" fill="currentColor" stroke="none"/><circle cx="12" cy="14" r="0.8" fill="currentColor" stroke="none"/><circle cx="15.5" cy="14" r="0.8" fill="currentColor" stroke="none"/></svg>
+    );
+    case "trophy": return (
+      <svg {...props}><path d="M8 4h8v6a4 4 0 01-8 0V4z"/><path d="M8 6H5v2a3 3 0 003 3M16 6h3v2a3 3 0 01-3 3"/><path d="M10 14v3M14 14v3"/><path d="M8 20h8"/><path d="M9 17h6"/></svg>
+    );
     default: return null;
   }
 }

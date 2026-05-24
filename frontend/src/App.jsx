@@ -3,7 +3,9 @@ import TabShell from "./layouts/TabShell";
 import Login from "./screens/auth/Login";
 import HomeScreen from "./screens/home/HomeScreen";
 import ChatScreen from "./screens/chat/ChatScreen";
-import StudyScreen from "./screens/study/StudyScreen";
+import StudyDashboard from "./screens/study/StudyDashboard";
+import CategoryScreen from "./screens/study/CategoryScreen";
+import BattleScreen from "./screens/battle/BattleScreen";
 import PomodoroScreen from "./screens/pomodoro/PomodoroScreen";
 import ProfileScreen from "./screens/profile/ProfileScreen";
 import PollsScreen from "./screens/polls/PollsScreen";
@@ -31,7 +33,9 @@ export default function App() {
         <Route element={<RequireAuth><TabShell /></RequireAuth>}>
           <Route path="/home" element={<HomeScreen />} />
           <Route path="/chat" element={<ChatScreen />} />
-          <Route path="/study" element={<StudyScreen />} />
+          <Route path="/study" element={<StudyDashboard />} />
+          <Route path="/study/:categoryId" element={<CategoryScreen />} />
+          <Route path="/battle" element={<BattleScreen />} />
           <Route path="/timer" element={<PomodoroScreen />} />
           <Route path="/you" element={<ProfileScreen />} />
         </Route>
