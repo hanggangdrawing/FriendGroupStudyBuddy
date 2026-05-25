@@ -8,7 +8,7 @@ export const AVATAR_COLORS = [
 ];
 
 export const FRIENDS = [
-  { id: "haddy",   name: "Haddy",   role: "Civil Service prep" },
+  { id: "haddy",   name: "Haddy",   role: "Lead" },
   { id: "edres",   name: "Edres",   role: "Backend lead" },
   { id: "jho",     name: "Jho",     role: "Frontend / UI" },
   { id: "abdensa", name: "Abdensa", role: "Algorithms" },
@@ -27,6 +27,8 @@ export const FRIENDS = [
   { id: "huamza",  name: "Huamza",  role: "Mock exams" },
   { id: "waren",   name: "Waren",   role: "Cheerleader" },
   { id: "basty",   name: "Basty",   role: "Group historian" },
+  { id: "paw",     name: "Papaw",   role: "Chill"}
+  { id: "Kelh",    name: "Kelhma"   role: "Unknown"}
 ].map((f, i) => ({ ...f, color: AVATAR_COLORS[i % AVATAR_COLORS.length] }));
 
 export const initialsOf = (name) => {
@@ -346,3 +348,22 @@ export const TAG_TONES = {
   infra:  "ochre",
   meet:   "default",
 };
+
+export const CSE_CATEGORIES = [
+  { id: "numerical",  title: "Numerical Ability",   icon: "poll",     tone: "terra", total: 180 },
+  { id: "analytical", title: "Analytical Ability",  icon: "settings", tone: "sage",  total: 180 },
+  { id: "verbal",     title: "Verbal Ability",      icon: "book",     tone: "ochre", total: 180 },
+  { id: "clerical",   title: "Clerical Ability",    icon: "edit",     tone: "berry", total: 180 },
+  { id: "general",    title: "General Information", icon: "search",   tone: "terra", total: 240 },
+];
+
+export const USER_MASTERY = {
+  numerical:  { unlocked: 0, masteredPct: 0 },
+  analytical: { unlocked: 0, masteredPct: 0 },
+  verbal:     { unlocked: 0, masteredPct: 0 },
+  clerical:   { unlocked: 0, masteredPct: 0 },
+  general:    { unlocked: 0, masteredPct: 0 },
+};
+
+export const findCategory = (id) => CSE_CATEGORIES.find((c) => c.id === id);
+
