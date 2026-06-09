@@ -1,41 +1,32 @@
-"""
-Database setup — Ticket #2.
+import sqlite3
+import os
 
-Exports:
-  engine       — SQLAlchemy engine (SQLite in dev, PostgreSQL in prod)
-  SessionLocal — sessionmaker factory
-  Base         — declarative base for all ORM models
-  get_db()     — FastAPI dependency that yields a DB session and closes it after the request
-"""
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, declarative_base
-from backend.config import DATABASE_URL
+# Define the database file location
+DB_PATH = os.path.join(os.path.dirname(__file__), "studygroup.db")
 
-# Use check_same_thread=False only for SQLite (required for FastAPI's threading model)
-connect_args = {"check_same_thread": False} if DATABASE_URL.startswith("sqlite") else {}
+def get_db_connection():
+    """Establishes a connection and returns it."""
+    conn = sqlite3.connect(DB_PATH)
+    # Allows us to access columns by name: row['username']
+    conn.row_factory = sqlite3.Row
+    return conn
 
-engine = create_engine(DATABASE_URL, connect_args=connect_args)
+def init_db():
+    """Reads the schema.sql and creates tables if they don't exist."""
+    schema_path = os.path.join(os.path.dirname(__file__), "schema.sql")
+    
+    if not os.path.exists(schema_path):
+        print(f"Error: {schema_path} not found.")
+        return
 
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
-Base = declarative_base()
-
-
-def get_db():
-    """
-    FastAPI dependency — yields a DB session per request and guarantees close.
-
-    Usage in a route:
-        from backend.database import get_db
-        from sqlalchemy.orm import Session
-        from fastapi import Depends
-
-        @router.get("/example")
-        def example(db: Session = Depends(get_db)):
-            ...
-    """
-    db = SessionLocal()
+    with open(schema_path, 'r') as f:
+        sql_script = f.read()
+    
+    conn = get_db_connection()
     try:
-        yield db
+        conn.executescript(sql_script)
+        conn.commit()
+    except sqlite3.Error as e:
+        print(f"An error occurred while initializing the DB: {e}")
     finally:
-        db.close()
+        conn.close()
