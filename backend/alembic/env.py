@@ -17,7 +17,8 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
 # Pull DATABASE_URL from the environment (loaded by backend.config via dotenv)
 # ---------------------------------------------------------------------------
 from backend.config import DATABASE_URL  # noqa: E402
-from backend.database import Base  # noqa: E402  — imports Base so autogenerate can see models
+from backend.database import Base  # noqa: E402
+import backend.models  # noqa: E402,F401  — registers models on Base.metadata for autogenerate
 
 # This is the Alembic Config object, which provides
 # access to the values within the .ini file in use.

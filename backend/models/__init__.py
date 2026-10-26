@@ -1,1 +1,3 @@
-# models package — import ORM models here as they are added
+from backend.models.user import User
+
+__all__ = ["User"]
