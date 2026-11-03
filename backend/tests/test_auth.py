@@ -26,6 +26,11 @@ class AuthTest(unittest.TestCase):
 
         self.assertIn("access_token", result)
 
+    def test_register_returns_user_id(self):
+        result = register(UserCreate(username="jho", email="jho@example.com", password="secret123"), self.db)
+
+        self.assertEqual(result["user_id"], "jho")
+
     def test_duplicate_register_rejected(self):
         user = UserCreate(username="jho", email="jho@example.com", password="secret123")
         register(user, self.db)

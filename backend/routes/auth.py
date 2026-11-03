@@ -25,23 +25,22 @@ def create_access_token(data: dict):
 # --- Routes ---
 @router.post("/register")
 def register(user: UserCreate, db: Session = Depends(get_db)):
-    db.add(
-        User(
-            id=user.username,
-            username=user.username,
-            email=user.email,
-            password_hash=pwd_context.hash(user.password),
-            display_name=user.username,
-            role="Member",
-            color="#C9924A",
-        )
+    user_row = User(
+        id=user.username,
+        username=user.username,
+        email=user.email,
+        password_hash=pwd_context.hash(user.password),
+        display_name=user.username,
+        role="Member",
+        color="#C9924A",
     )
+    db.add(user_row)
     try:
         db.commit()
     except IntegrityError:
         db.rollback()
         raise HTTPException(status_code=400, detail="User already exists")
-    return {"message": "User registered successfully"}
+    return {"message": "User registered successfully", "user_id": user_row.id}
 
 
 @router.post("/login")
