@@ -114,3 +114,58 @@ Since learning GitHub is also a goal:
 
 ---
 
+## 🚀 Run It Locally
+
+### Backend (FastAPI + SQLite)
+
+```bash
+cd backend
+python -m venv .venv
+```
+
+Activate the virtual environment:
+- Windows: `.venv\Scripts\activate`
+- macOS / Linux: `source .venv/bin/activate`
+
+```bash
+pip install -r requirements.txt
+copy .env.example .env      # macOS / Linux: cp .env.example .env
+alembic upgrade head        # creates dev.db and applies migrations
+```
+
+Start the API from the **repo root** (imports are `backend.*`):
+
+```bash
+uvicorn backend.main:app --reload
+```
+
+- Health check: http://localhost:8000/
+- Swagger docs: http://localhost:8000/docs
+
+### Tests
+
+From the repo root:
+
+```bash
+python -m unittest discover -s backend/tests -t .
+```
+
+### Frontend (React + Vite)
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Open http://localhost:5173 — the backend already allows this origin via CORS.
+The frontend currently runs on mock data (`frontend/src/data/seed.js`).
+
+### Android demo APK
+
+The `Android APK` GitHub Actions workflow builds `app-debug.apk` with Capacitor.
+It runs on pushes to `main` or `feature/android-apk`, or on demand via **Actions → Android APK → Run workflow**.
+Download the APK from the run's **Artifacts** section.
+
+---
+
