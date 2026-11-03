@@ -4,35 +4,65 @@ import Icon from "../../components/ui/Icon";
 import Character from "../../components/character/Character";
 import SpeechBubble from "../../components/character/SpeechBubble";
 import SocialCircle from "../../components/character/SocialCircle";
-import { DEFAULT_USER_ID } from "../../data/seed";
+import { DEFAULT_USER_ID, findFriend } from "../../data/seed";
+import { login, me, register } from "../../lib/api";
+import { saveSession } from "../../lib/useUser";
 
 export default function Login() {
   const [mode, setMode] = useState("signin");
   const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
+  const [apiDown, setApiDown] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = () => {
+  const handleSubmit = async ({ username, email, password }) => {
     setBusy(true);
-    setTimeout(() => {
-      // Mock: log in as the default user. Replace with backend auth later.
-      localStorage.setItem("hd.user", DEFAULT_USER_ID);
+    setError("");
+    try {
+      if (mode === "signup") await register({ username, email, password });
+      const { access_token } = await login({ email, password });
+      saveSession(access_token, await me(access_token));
       navigate("/home");
-    }, 800);
+    } catch (err) {
+      setError(err.message);
+      // fetch throws TypeError when the API is unreachable (e.g. the offline demo APK)
+      setApiDown(err instanceof TypeError);
+    } finally {
+      setBusy(false);
+    }
   };
 
-  return <AuthStep mode={mode} setMode={setMode} busy={busy} onSubmit={handleSubmit} />;
+  const handleOffline = () => {
+    saveSession(null, findFriend(DEFAULT_USER_ID));
+    navigate("/home");
+  };
+
+  return (
+    <AuthStep
+      mode={mode}
+      setMode={(m) => { setMode(m); setError(""); setApiDown(false); }}
+      busy={busy}
+      error={error}
+      apiDown={apiDown}
+      onSubmit={handleSubmit}
+      onOffline={handleOffline}
+    />
+  );
 }
 
-function AuthStep({ mode, setMode, busy, onSubmit }) {
+function AuthStep({ mode, setMode, busy, error, apiDown, onSubmit, onOffline }) {
   const isSignUp = mode === "signup";
   const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
 
   const valid =
-    username.trim().length >= 2 &&
+    email.includes("@") &&
     password.length >= 6 &&
-    (!isSignUp || confirm === password);
+    (!isSignUp || (username.trim().length >= 2 && confirm === password));
+
+  const submit = () => onSubmit({ username, email, password });
 
   return (
     <div style={{
@@ -122,12 +152,35 @@ function AuthStep({ mode, setMode, busy, onSubmit }) {
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-          <RoundedField value={username} onChange={setUsername} placeholder="User name" />
+          {isSignUp && (
+            <RoundedField value={username} onChange={setUsername} placeholder="User name" />
+          )}
+          <RoundedField value={email} onChange={setEmail} placeholder="Email" type="email" />
           <RoundedField value={password} onChange={setPassword} placeholder="Password" type="password" />
           {isSignUp && (
             <RoundedField value={confirm} onChange={setConfirm} placeholder="Confirm password" type="password" />
           )}
         </div>
+
+        {error && (
+          <div style={{
+            marginTop: 12, textAlign: "center", fontSize: 12,
+            color: "#dc2626", lineHeight: 1.5, fontWeight: 600,
+          }}>
+            {error}
+          </div>
+        )}
+
+        {apiDown && (
+          <button onClick={onOffline} style={{
+            marginTop: 8, alignSelf: "center",
+            background: "transparent", border: "none",
+            color: "var(--accent)", fontSize: 12, fontWeight: 700,
+            textDecoration: "underline", cursor: "pointer",
+          }}>
+            Continue offline (demo)
+          </button>
+        )}
 
         {!isSignUp && (
           <button style={{
@@ -137,7 +190,7 @@ function AuthStep({ mode, setMode, busy, onSubmit }) {
           }}>Forgotten password?</button>
         )}
 
-        <button onClick={onSubmit} disabled={!valid || busy} style={{
+        <button onClick={submit} disabled={!valid || busy} style={{
           marginTop: 18, padding: "16px 22px",
           background: valid && !busy ? "#fbbf24" : "#fde68a",
           color: "#1f2937", border: "none", borderRadius: 999,
@@ -157,9 +210,10 @@ function AuthStep({ mode, setMode, busy, onSubmit }) {
         }}>OR</div>
 
         <div style={{ display: "flex", justifyContent: "center", gap: 16, marginBottom: 8 }}>
-          <SocialCircle provider="facebook" disabled={busy} onClick={onSubmit} />
-          <SocialCircle provider="google" disabled={busy} onClick={onSubmit} />
-          <SocialCircle provider="apple" disabled={busy} onClick={onSubmit} />
+          {/* Social login isn't wired to a provider yet; it drops into the offline demo user. */}
+          <SocialCircle provider="facebook" disabled={busy} onClick={onOffline} />
+          <SocialCircle provider="google" disabled={busy} onClick={onOffline} />
+          <SocialCircle provider="apple" disabled={busy} onClick={onOffline} />
         </div>
 
         <div style={{
@@ -186,7 +240,7 @@ function RoundedField({ value, onChange, placeholder, type = "text" }) {
       transition: "border 0.15s",
     }}>
       <input
-        type={isPw && !show ? "password" : "text"}
+        type={isPw && !show ? "password" : type}
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}

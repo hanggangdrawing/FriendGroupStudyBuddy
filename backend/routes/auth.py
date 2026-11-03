@@ -9,7 +9,8 @@ from sqlalchemy.orm import Session
 from backend.config import JWT_ALGORITHM, JWT_EXPIRE_MINUTES, JWT_SECRET
 from backend.database import get_db
 from backend.models.user import User
-from backend.schemas.user import LoginRequest, UserCreate
+from backend.schemas.user import LoginRequest, UserCreate, UserPublic
+from backend.security import get_current_user
 
 router = APIRouter()
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
@@ -52,3 +53,8 @@ def login(request: LoginRequest, db: Session = Depends(get_db)):
 
     token = create_access_token(data={"sub": user.email})
     return {"access_token": token, "token_type": "bearer"}
+
+
+@router.get("/me", response_model=UserPublic)
+def me(current_user: User = Depends(get_current_user)):
+    return current_user

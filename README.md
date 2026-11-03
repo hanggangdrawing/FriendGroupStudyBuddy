@@ -159,7 +159,16 @@ npm run dev
 ```
 
 Open http://localhost:5173 — the backend already allows this origin via CORS.
-The frontend currently runs on mock data (`frontend/src/data/seed.js`).
+
+Auth is wired to the API (`frontend/src/lib/api.js`). The base URL defaults to
+`http://localhost:8000`; override it at build time:
+
+```bash
+VITE_API_URL=https://your-api.example.com npm run build
+```
+
+The screens themselves still render mock data from `frontend/src/data/seed.js`.
+If the API is unreachable, the login screen offers **Continue offline (demo)**.
 
 ### Android demo APK
 
