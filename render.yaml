@@ -1,0 +1,27 @@
+databases:
+  - name: hanggangdrawing-db
+    databaseName: hanggangdrawing
+    user: hanggangdrawing
+    plan: free
+    region: singapore
+
+services:
+  - type: web
+    name: hanggangdrawing-api
+    runtime: python
+    plan: free
+    region: singapore
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: alembic -c backend/alembic.ini upgrade head && uvicorn backend.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.6"
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CORS_ORIGINS
+        value: http://localhost:5173,https://localhost,capacitor://localhost
+      - key: DATABASE_URL
+        fromDatabase:
+          name: hanggangdrawing-db
+          property: connectionString

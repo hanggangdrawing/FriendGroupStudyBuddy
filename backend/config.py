@@ -11,3 +11,10 @@ DATABASE_URL: str = os.getenv("DATABASE_URL", "sqlite:///./dev.db")
 JWT_SECRET: str = os.getenv("JWT_SECRET", "change-me-to-a-long-random-string")
 JWT_ALGORITHM: str = os.getenv("JWT_ALGORITHM", "HS256")
 JWT_EXPIRE_MINUTES: int = int(os.getenv("JWT_EXPIRE_MINUTES", "10080"))
+
+# Comma-separated browser origins. `https://localhost` is the Capacitor APK WebView.
+CORS_ORIGINS: list[str] = [
+    origin.strip()
+    for origin in os.getenv("CORS_ORIGINS", "http://localhost:5173,https://localhost").split(",")
+    if origin.strip()
+]

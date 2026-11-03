@@ -38,6 +38,8 @@ jobs:
       - run: npm ci
 
       - run: npm run build
+        env:
+          VITE_API_URL: ${{ vars.VITE_API_URL }}
 
       # The native project is generated, not tracked: `android/` is gitignored.
       - run: npx cap add android
