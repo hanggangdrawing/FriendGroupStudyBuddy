@@ -12,7 +12,7 @@ services:
     plan: free
     region: singapore
     buildCommand: pip install -r backend/requirements.txt
-    startCommand: alembic -c backend/alembic.ini upgrade head && uvicorn backend.main:app --host 0.0.0.0 --port $PORT
+    startCommand: alembic -c backend/alembic.ini upgrade head && python -m backend.scripts.seed_questions && uvicorn backend.main:app --host 0.0.0.0 --port $PORT
     healthCheckPath: /
     envVars:
       - key: PYTHON_VERSION

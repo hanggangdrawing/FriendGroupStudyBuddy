@@ -5,6 +5,7 @@ import HomeScreen from "./screens/home/HomeScreen";
 import ChatScreen from "./screens/chat/ChatScreen";
 import StudyDashboard from "./screens/study/StudyDashboard";
 import CategoryScreen from "./screens/study/CategoryScreen";
+import QuizScreen from "./screens/study/QuizScreen";
 import BattleScreen from "./screens/battle/BattleScreen";
 import PomodoroScreen from "./screens/pomodoro/PomodoroScreen";
 import ProfileScreen from "./screens/profile/ProfileScreen";
@@ -46,6 +47,7 @@ export default function App() {
         <Route path="/decks/:id" element={<RequireAuth><FlashcardScreen /></RequireAuth>} />
         <Route path="/ai" element={<RequireAuth><AIBuddyScreen /></RequireAuth>} />
         <Route path="/kanban" element={<RequireAuth><KanbanScreen /></RequireAuth>} />
+        <Route path="/study/:categoryId/quiz" element={<RequireAuth><QuizScreen /></RequireAuth>} />
 
         <Route path="*" element={<Navigate to="/home" replace />} />
       </Routes>

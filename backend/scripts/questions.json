@@ -1,0 +1,407 @@
+[
+  {
+    "id": "numerical-01",
+    "category": "numerical",
+    "prompt": "What is 15% of 240?",
+    "choices": ["24", "32", "36", "48"],
+    "answer_index": 2,
+    "explanation": "0.15 × 240 = 36."
+  },
+  {
+    "id": "numerical-02",
+    "category": "numerical",
+    "prompt": "If 3x − 7 = 20, what is x?",
+    "choices": ["7", "9", "11", "13"],
+    "answer_index": 1,
+    "explanation": "3x = 27, so x = 9."
+  },
+  {
+    "id": "numerical-03",
+    "category": "numerical",
+    "prompt": "Two numbers are in the ratio 3:5 and their sum is 64. What is the larger number?",
+    "choices": ["24", "32", "40", "48"],
+    "answer_index": 2,
+    "explanation": "64 ÷ 8 = 8 per part; 5 × 8 = 40."
+  },
+  {
+    "id": "numerical-04",
+    "category": "numerical",
+    "prompt": "A shirt costs ₱1,200 and is on sale at 25% off. What is the sale price?",
+    "choices": ["₱800", "₱900", "₱950", "₱1,000"],
+    "answer_index": 1,
+    "explanation": "25% of 1,200 is 300; 1,200 − 300 = 900."
+  },
+  {
+    "id": "numerical-05",
+    "category": "numerical",
+    "prompt": "What is the average of 12, 18, 24, and 30?",
+    "choices": ["18", "20", "21", "24"],
+    "answer_index": 2,
+    "explanation": "(12 + 18 + 24 + 30) ÷ 4 = 84 ÷ 4 = 21."
+  },
+  {
+    "id": "numerical-06",
+    "category": "numerical",
+    "prompt": "Which fraction equals 0.75?",
+    "choices": ["1/2", "2/3", "3/4", "4/5"],
+    "answer_index": 2,
+    "explanation": "3 ÷ 4 = 0.75."
+  },
+  {
+    "id": "numerical-07",
+    "category": "numerical",
+    "prompt": "A car travels at 60 km/h for 45 minutes. How far does it go?",
+    "choices": ["30 km", "40 km", "45 km", "50 km"],
+    "answer_index": 2,
+    "explanation": "45 minutes is 0.75 h; 60 × 0.75 = 45 km."
+  },
+  {
+    "id": "numerical-08",
+    "category": "numerical",
+    "prompt": "Five workers finish a job in 6 days. At the same rate, how long will ten workers take?",
+    "choices": ["2 days", "3 days", "4 days", "6 days"],
+    "answer_index": 1,
+    "explanation": "Work is 30 worker-days; 30 ÷ 10 = 3 days."
+  },
+  {
+    "id": "numerical-09",
+    "category": "numerical",
+    "prompt": "What is 2/5 + 1/4?",
+    "choices": ["3/9", "7/20", "13/20", "3/4"],
+    "answer_index": 2,
+    "explanation": "8/20 + 5/20 = 13/20."
+  },
+  {
+    "id": "numerical-10",
+    "category": "numerical",
+    "prompt": "What is the simple interest on ₱5,000 at 6% per year for 2 years?",
+    "choices": ["₱300", "₱500", "₱600", "₱700"],
+    "answer_index": 2,
+    "explanation": "I = P × r × t = 5,000 × 0.06 × 2 = 600."
+  },
+  {
+    "id": "analytical-01",
+    "category": "analytical",
+    "prompt": "What comes next: 2, 4, 8, 16, ___?",
+    "choices": ["20", "24", "32", "64"],
+    "answer_index": 2,
+    "explanation": "Each term doubles: 16 × 2 = 32."
+  },
+  {
+    "id": "analytical-02",
+    "category": "analytical",
+    "prompt": "Which number does not belong: 3, 5, 7, 9, 11?",
+    "choices": ["3", "5", "9", "11"],
+    "answer_index": 2,
+    "explanation": "9 is the only composite; the rest are prime."
+  },
+  {
+    "id": "analytical-03",
+    "category": "analytical",
+    "prompt": "What comes next: 1, 4, 9, 16, ___?",
+    "choices": ["20", "24", "25", "36"],
+    "answer_index": 2,
+    "explanation": "These are perfect squares; 5² = 25."
+  },
+  {
+    "id": "analytical-04",
+    "category": "analytical",
+    "prompt": "If Monday is day 1, what day is day 100?",
+    "choices": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+    "answer_index": 1,
+    "explanation": "Day 99 is Monday (98 days = 14 weeks), so day 100 is Tuesday."
+  },
+  {
+    "id": "analytical-05",
+    "category": "analytical",
+    "prompt": "In a code, CAT is written as DBU. How is DOG written?",
+    "choices": ["EPH", "EPG", "EOH", "FPI"],
+    "answer_index": 0,
+    "explanation": "Each letter moves one forward: D→E, O→P, G→H."
+  },
+  {
+    "id": "analytical-06",
+    "category": "analytical",
+    "prompt": "What comes next: 1, 1, 2, 3, 5, 8, ___?",
+    "choices": ["11", "12", "13", "15"],
+    "answer_index": 2,
+    "explanation": "Fibonacci: 5 + 8 = 13."
+  },
+  {
+    "id": "analytical-07",
+    "category": "analytical",
+    "prompt": "A, C, F, J, ___ — the gaps grow by one letter each time.",
+    "choices": ["L", "M", "N", "O"],
+    "answer_index": 3,
+    "explanation": "A→C (+2), C→F (+3), F→J (+4), so J→O (+5)."
+  },
+  {
+    "id": "analytical-08",
+    "category": "analytical",
+    "prompt": "All engineers are graduates. Some graduates are teachers. Which conclusion must be true?",
+    "choices": [
+      "All engineers are teachers",
+      "Some engineers are teachers",
+      "All graduates are engineers",
+      "Nothing definite about engineers and teachers"
+    ],
+    "answer_index": 3,
+    "explanation": "The overlap of engineers and teachers is never established."
+  },
+  {
+    "id": "analytical-09",
+    "category": "analytical",
+    "prompt": "If it rains, the ground gets wet. The ground is wet. What follows?",
+    "choices": ["It rained", "It did not rain", "It may or may not have rained", "The ground is dry"],
+    "answer_index": 2,
+    "explanation": "A wet ground can have other causes; the premise does not prove rain."
+  },
+  {
+    "id": "analytical-10",
+    "category": "analytical",
+    "prompt": "Which does not belong: square, circle, triangle, rectangle?",
+    "choices": ["Square", "Circle", "Triangle", "Rectangle"],
+    "answer_index": 1,
+    "explanation": "A circle has no straight sides."
+  },
+  {
+    "id": "verbal-01",
+    "category": "verbal",
+    "prompt": "Choose the synonym of “abundant”.",
+    "choices": ["Scarce", "Plentiful", "Rare", "Empty"],
+    "answer_index": 1,
+    "explanation": "Abundant means existing in large quantities — plentiful."
+  },
+  {
+    "id": "verbal-02",
+    "category": "verbal",
+    "prompt": "Choose the antonym of “frugal”.",
+    "choices": ["Thrifty", "Wasteful", "Careful", "Modest"],
+    "answer_index": 1,
+    "explanation": "Frugal means economical; its opposite is wasteful."
+  },
+  {
+    "id": "verbal-03",
+    "category": "verbal",
+    "prompt": "Which spelling is correct?",
+    "choices": ["Accomodate", "Acommodate", "Accommodate", "Acomadate"],
+    "answer_index": 2,
+    "explanation": "Accommodate has double c and double m."
+  },
+  {
+    "id": "verbal-04",
+    "category": "verbal",
+    "prompt": "She ___ to the office every day.",
+    "choices": ["Go", "Goes", "Going", "Gone"],
+    "answer_index": 1,
+    "explanation": "Third-person singular takes -es: she goes."
+  },
+  {
+    "id": "verbal-05",
+    "category": "verbal",
+    "prompt": "Choose the synonym of “candid”.",
+    "choices": ["Secretive", "Frank", "Rude", "Shy"],
+    "answer_index": 1,
+    "explanation": "Candid means honest and direct — frank."
+  },
+  {
+    "id": "verbal-06",
+    "category": "verbal",
+    "prompt": "Choose the antonym of “benevolent”.",
+    "choices": ["Kind", "Cruel", "Generous", "Gentle"],
+    "answer_index": 1,
+    "explanation": "Benevolent means kind; the opposite is cruel."
+  },
+  {
+    "id": "verbal-07",
+    "category": "verbal",
+    "prompt": "“To bite the bullet” means to ___.",
+    "choices": ["Avoid danger", "Endure a difficult situation", "Speak carelessly", "Act in a hurry"],
+    "answer_index": 1,
+    "explanation": "The idiom means facing something unpleasant with courage."
+  },
+  {
+    "id": "verbal-08",
+    "category": "verbal",
+    "prompt": "Between you and ___, this stays private.",
+    "choices": ["I", "Me", "Myself", "Mine"],
+    "answer_index": 1,
+    "explanation": "After a preposition, use the object pronoun: between you and me."
+  },
+  {
+    "id": "verbal-09",
+    "category": "verbal",
+    "prompt": "Choose the word closest in meaning to “meticulous”.",
+    "choices": ["Careless", "Careful", "Hurried", "Lazy"],
+    "answer_index": 1,
+    "explanation": "Meticulous means showing great attention to detail — careful."
+  },
+  {
+    "id": "verbal-10",
+    "category": "verbal",
+    "prompt": "What is the plural of “criterion”?",
+    "choices": ["Criterions", "Criteria", "Criterias", "Criterium"],
+    "answer_index": 1,
+    "explanation": "Criterion is Greek in origin; its plural is criteria."
+  },
+  {
+    "id": "clerical-01",
+    "category": "clerical",
+    "prompt": "Which comes first alphabetically?",
+    "choices": ["Mango", "Manage", "Manganese", "Manual"],
+    "answer_index": 1,
+    "explanation": "Compare letter by letter: Mana-g comes before Mang-a."
+  },
+  {
+    "id": "clerical-02",
+    "category": "clerical",
+    "prompt": "Which value is the smallest: 3/4, 0.7, 65%, 2/3?",
+    "choices": ["3/4", "0.7", "65%", "2/3"],
+    "answer_index": 2,
+    "explanation": "65% = 0.65, below 2/3 ≈ 0.667, 0.7, and 0.75."
+  },
+  {
+    "id": "clerical-03",
+    "category": "clerical",
+    "prompt": "Which number is the largest?",
+    "choices": ["0.089", "0.809", "0.098", "0.89"],
+    "answer_index": 3,
+    "explanation": "0.89 = 0.890, greater than 0.809."
+  },
+  {
+    "id": "clerical-04",
+    "category": "clerical",
+    "prompt": "Which spelling is correct?",
+    "choices": ["Seperate", "Separate", "Seperete", "Separete"],
+    "answer_index": 1,
+    "explanation": "There is “a rat” in sep-a-rate: separate."
+  },
+  {
+    "id": "clerical-05",
+    "category": "clerical",
+    "prompt": "Files are arranged alphabetically. Which name comes last?",
+    "choices": ["Bagumbayan", "Basco", "Bautista", "Bautista, Jr."],
+    "answer_index": 3,
+    "explanation": "Bautista, Jr. follows Bautista because the suffix is filed after the surname."
+  },
+  {
+    "id": "clerical-06",
+    "category": "clerical",
+    "prompt": "Which is the smallest: 0.5, 1/3, 45%, 0.05?",
+    "choices": ["0.5", "1/3", "45%", "0.05"],
+    "answer_index": 3,
+    "explanation": "0.05 is five hundredths — smaller than 1/3, 45%, and 0.5."
+  },
+  {
+    "id": "clerical-07",
+    "category": "clerical",
+    "prompt": "Which abbreviation means “for example”?",
+    "choices": ["i.e.", "e.g.", "etc.", "et al."],
+    "answer_index": 1,
+    "explanation": "e.g. stands for exempli gratia (“for example”); i.e. means “that is”."
+  },
+  {
+    "id": "clerical-08",
+    "category": "clerical",
+    "prompt": "How many times does the letter “a” appear in “characteristic”?",
+    "choices": ["0", "1", "2", "3"],
+    "answer_index": 2,
+    "explanation": "c-h-a-r-a-c-t-e-r-i-s-t-i-c has two a's."
+  },
+  {
+    "id": "clerical-09",
+    "category": "clerical",
+    "prompt": "Which code matches “PL-4471-B” exactly?",
+    "choices": ["PL-4471-8", "PL-4471-B", "PL-44T1-B", "PL-447l-B"],
+    "answer_index": 1,
+    "explanation": "The zeros, letters, and hyphen positions must match exactly."
+  },
+  {
+    "id": "clerical-10",
+    "category": "clerical",
+    "prompt": "Which date is the earliest?",
+    "choices": ["12/31/2024", "01/15/2024", "11/30/2024", "01/05/2024"],
+    "answer_index": 3,
+    "explanation": "January 5 comes before January 15, 2024."
+  },
+  {
+    "id": "general-01",
+    "category": "general",
+    "prompt": "How many branches does the Philippine government have?",
+    "choices": ["Two", "Three", "Four", "Five"],
+    "answer_index": 1,
+    "explanation": "Executive, legislative, and judicial."
+  },
+  {
+    "id": "general-02",
+    "category": "general",
+    "prompt": "What is the capital of the Philippines?",
+    "choices": ["Cebu City", "Manila", "Quezon City", "Davao City"],
+    "answer_index": 1,
+    "explanation": "Manila is the capital; Quezon City is the most populous city."
+  },
+  {
+    "id": "general-03",
+    "category": "general",
+    "prompt": "Which law sets the code of conduct for public officials and employees?",
+    "choices": ["RA 6713", "RA 1425", "RA 9165", "RA 9485"],
+    "answer_index": 0,
+    "explanation": "RA 6713 is the Code of Conduct and Ethical Standards for Public Officials and Employees."
+  },
+  {
+    "id": "general-04",
+    "category": "general",
+    "prompt": "Who is the national hero of the Philippines?",
+    "choices": ["Andres Bonifacio", "Emilio Aguinaldo", "Jose Rizal", "Apolinario Mabini"],
+    "answer_index": 2,
+    "explanation": "Jose Rizal is recognized as the national hero."
+  },
+  {
+    "id": "general-05",
+    "category": "general",
+    "prompt": "CSE stands for ___.",
+    "choices": ["Civil Service Examination", "Certified Skills Exam", "Career Service Evaluation", "Civil Security Exam"],
+    "answer_index": 0,
+    "explanation": "The Civil Service Examination is the eligibility exam for public service."
+  },
+  {
+    "id": "general-06",
+    "category": "general",
+    "prompt": "Which agency administers the Career Service Examination?",
+    "choices": ["DepEd", "CSC", "CHED", "DSWD"],
+    "answer_index": 1,
+    "explanation": "The Civil Service Commission (CSC) administers the CSE."
+  },
+  {
+    "id": "general-07",
+    "category": "general",
+    "prompt": "Philippine Independence Day is celebrated on ___.",
+    "choices": ["June 12", "July 4", "August 21", "November 30"],
+    "answer_index": 0,
+    "explanation": "Independence was declared on June 12, 1898 in Kawit, Cavite."
+  },
+  {
+    "id": "general-08",
+    "category": "general",
+    "prompt": "How many senators does the Philippines have?",
+    "choices": ["12", "24", "30", "36"],
+    "answer_index": 1,
+    "explanation": "The Constitution provides for 24 senators."
+  },
+  {
+    "id": "general-09",
+    "category": "general",
+    "prompt": "The three branches of government are executive, legislative, and ___.",
+    "choices": ["Military", "Judicial", "Electoral", "Administrative"],
+    "answer_index": 1,
+    "explanation": "The judiciary interprets the law."
+  },
+  {
+    "id": "general-10",
+    "category": "general",
+    "prompt": "“Bayanihan” best describes ___.",
+    "choices": ["Individual effort", "Community cooperation", "Political rivalry", "Religious devotion"],
+    "answer_index": 1,
+    "explanation": "Bayanihan is the tradition of a community helping together."
+  }
+]

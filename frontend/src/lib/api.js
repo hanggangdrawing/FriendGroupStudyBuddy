@@ -17,3 +17,6 @@ async function request(path, { method = "GET", body, token } = {}) {
 export const register = (payload) => request("/auth/register", { method: "POST", body: payload });
 export const login = (payload) => request("/auth/login", { method: "POST", body: payload });
 export const me = (token) => request("/auth/me", { token });
+
+export const questions = (category, limit = 10) =>
+  request(`/study/questions?category=${encodeURIComponent(category)}&limit=${limit}`);

@@ -46,10 +46,23 @@ export default function CategoryScreen() {
             fontFamily: "var(--font-display)", fontWeight: 700,
             fontSize: 20, color: "var(--ink)",
           }}>
-            Coming soon
+            {cat.title}
           </div>
           <div style={{ fontSize: 13, color: "var(--ink-mute)", lineHeight: 1.5, maxWidth: 280 }}>
-            Flashcards and quizzes for {cat.title} will live here once the backend question bank is ready.
+            A 10-question mock exam drawn from the CSE question bank. Each answer comes with a
+            short explanation, so you learn even when you miss.
+          </div>
+          <button onClick={() => navigate(`/study/${cat.id}/quiz`)} style={{
+            marginTop: 6, padding: "15px 26px",
+            background: `var(--${cat.tone})`, color: "#fbf6e8",
+            border: "none", borderRadius: 999,
+            fontSize: 14, fontWeight: 800, letterSpacing: 0.6,
+            cursor: "pointer",
+          }}>
+            Start mock exam
+          </button>
+          <div style={{ fontSize: 11, color: "var(--ink-mute)" }}>
+            {cat.total} items planned · questions are shuffled every attempt
           </div>
         </div>
       </div>
