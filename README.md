@@ -133,9 +133,11 @@ copy .env.example .env      # macOS / Linux: cp .env.example .env
 alembic upgrade head        # creates dev.db and applies migrations
 ```
 
-Start the API from the **repo root** (imports are `backend.*`):
+Back at the **repo root**, load the question bank and start the API (imports are `backend.*`):
 
 ```bash
+cd ..
+python -m backend.scripts.seed_questions   # 50-question CSE bank, idempotent
 uvicorn backend.main:app --reload
 ```
 

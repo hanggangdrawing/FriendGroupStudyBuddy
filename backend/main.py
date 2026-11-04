@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from backend.config import CORS_ORIGINS
 from backend.routes.auth import router as auth_router
+from backend.routes.study import router as study_router
 
 app = FastAPI(
     title="Hanggangdrawing API",
@@ -19,6 +20,7 @@ app.add_middleware(
 )
 
 app.include_router(auth_router, prefix="/auth", tags=["auth"])
+app.include_router(study_router, prefix="/study", tags=["study"])
 
 @app.get("/", tags=["health"])
 def root():
